@@ -1,9 +1,7 @@
 services:
   - type: web
-    name: phishing-url-detector
-    env: python
-    buildCommand: |
-      pyenv install 3.9.13
-      pyenv global 3.9.13
-      pip install -r requirements.txt
-    startCommand: python app.py
+    name: phishing-url-detection
+    env: docker
+    plan: free
+    dockerfilePath: Dockerfile
+    autoDeploy: true
