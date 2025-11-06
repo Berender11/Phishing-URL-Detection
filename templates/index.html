@@ -79,24 +79,42 @@
 
 
     <script>
-
+        window.onload = function() {
             let x = '{{xx}}';
-            let num = x*100;
-            if (0<=x && x<0.50){
-                num = 100-num;
-            }
-            let txtx = num.toString();
-            if(x<=1 && x>=0.50){
-                var label = "Website is "+txtx +"% safe to use...";
-                document.getElementById("prediction").innerHTML = label;
-                document.getElementById("button1").style.display="block";
-            }
-            else if (0<=x && x<0.50){
-                var label = "Website is "+txtx +"% unsafe to use..."
-                document.getElementById("prediction").innerHTML = label ;
-                document.getElementById("button2").style.display="block";
+            let url = '{{url}}';
+
+            // Only reset if there's no result to show
+            if (!x && !url) {
+                document.getElementById("url").value = "";
+                document.getElementById("prediction").innerHTML = "";
+                document.getElementById("button1").style.display = "none";
+                document.getElementById("button2").style.display = "none";
+                document.querySelector('.scanned-url a').href = "";
+                document.querySelector('.scanned-url a').innerHTML = "";
+                return;
             }
 
+            // Process and display result if available
+            if (x) {
+                let num = x*100;
+                if (0<=x && x<0.50){
+                    num = 100-num;
+                }
+                let txtx = num.toString();
+                if(x<=1 && x>=0.50){
+                    var label = "Website is "+txtx +"% safe to use...";
+                    document.getElementById("prediction").innerHTML = label;
+                    document.getElementById("button1").style.display = "block";
+                    document.getElementById("button2").style.display = "none";
+                }
+                else if (0<=x && x<0.50){
+                    var label = "Website is "+txtx +"% unsafe to use...";
+                    document.getElementById("prediction").innerHTML = label;
+                    document.getElementById("button2").style.display = "block";
+                    document.getElementById("button1").style.display = "none";
+                }
+            }
+        };
     </script>
 
 </body>
