@@ -11,42 +11,60 @@
     <!-- BootStrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="static/styles.css" rel="stylesheet">
-    <title>URL detection</title>
-
+    <title>URL Security Scanner</title>
 </head>
 
 <body>
+    <div class="container main-container">
+        <div class="security-shield">
+            <i class="fas fa-shield-alt"></i>
+        </div>
+        <div class="content-wrapper">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h1 class="main-title">URL Security Scanner</h1>
+                    <p class="subtitle">Protect yourself from phishing attacks</p>
 
-<div class=" container">
-    <div class="row">
-        <div class="form col-md" id="form1">
-            <h2>PHISHING URL DETECTION</h2>
+                    <div class="scanner-form">
+                        <form action="/" method="post">
+                            <div class="input-group">
+                                <div class="input-wrapper">
+                                    <i class="fas fa-link input-icon"></i>
+                                    <input type="text" class="form__input" name="url" id="url" placeholder="Enter URL to scan" required="" />
+                                </div>
+                                <button class="scan-button" role="button">
+                                    <i class="fas fa-search-plus"></i> Scan URL
+                                </button>
+                            </div>
+                        </form>
+                    </div>
 
-            <br>
-            <form action="/" method ="post">
-                <input type="text" class="form__input" name ='url' id="url" placeholder="Enter URL" required="" />
-                <label for="url" class="form__label">URL</label>
-                <button class="button" role="button" >Check here</button>
-            </form>
-
+                    <div class="result-section" id="form2">
+                        <div class="scanned-url">
+                            <a href="{{ url }}" target="_blank" class="url-link">{{ url }}</a>
+                        </div>
+                        <div class="prediction-result">
+                            <h3 id="prediction" class="result-text"></h3>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="button-warning" id="button2" role="button" onclick="window.open('{{url}}')" target="_blank">
+                                <i class="fas fa-exclamation-triangle"></i> Proceed with Caution
+                            </button>
+                            <button class="button-success" id="button1" role="button" onclick="window.open('{{url}}')" target="_blank">
+                                <i class="fas fa-check-circle"></i> Safe to Continue
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <p>©2025 BERENDER | AKASH | PARTH</p>
+        </footer>
     </div>
-
-    <div class="col-md" id="form2">
-
-        <br>
-        <h6 class = "right "><a href= {{ url }} target="_blank">{{ url }}</a></h6>
-
-        <br>
-        <h3 id="prediction"></h3>
-        <button class="button2" id="button2" role="button" onclick="window.open('{{url}}')" target="_blank" >Still want to Continue</button>
-        <button class="button1" id="button1" role="button"  onclick="window.open('{{url}}')" target="_blank">Continue</button>
-    </div>
-</div>
-<br>
-<p>©2025 BERENDER | AKASH | PARTH</p>
-</div>
 
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
